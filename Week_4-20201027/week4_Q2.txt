@@ -1,0 +1,76 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;\red160\green32\blue240;\red0\green0\blue255;}
+{\*\expandedcolortbl;;\csgenericrgb\c62745\c12549\c94118;\csgenericrgb\c0\c0\c100000;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+t_init=0;\
+t_fin=1;\
+x_init=0;\
+y_init=0;\
+z_init=1;\
+h=0.001;\
+steps=(t_fin-t_init)/h;\
+\
+t_vals=t_init:h:t_fin;\
+t_vals_inter=t_init+h/2:h:t_fin+h/2;\
+x_vals=zeros(1,steps+1);\
+x_vals_inter=zeros(1,steps);\
+\pard\pardeftab720\partightenfactor0
+\cf0 y_vals=zeros(1,steps+1);\
+y_vals_half=zeros(1,steps);\
+z_vals=zeros(1,steps+1);\
+z_vals_half=zeros(1,steps);
+\f1 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0 \cf0 x_vals(1)=x_init;\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 y_vals(1)=y_init;\
+z_vals(1)=z_init;\
+\
+For i =2:steps+1\
+      x_vals_half(i-1)=x_vals(i-1)+(h/2)*(x_vals(i-1)^2+y_vals(i-1)*t_vals(i-1)^2);\
+      y_vals_half(i-1)=y_vals(i-1)+(h/2)*(z_vals(i-1)*t_vals(i-1));\
+      z_vals_half(i-1)=z_vals(i-1)+(h/2)*(t_vals(i-1)*sin(t_vals(i-1)));\
+      x_vals(i)=x_vals(i-1)+h*(x_vals_half(i-1)^2+y_vals_half(i-1)*t_vals_half(i-1)^2);\
+      y_vals(i)=y_vals(i-1)+h*(z_vals_half(i-1)*t_vals_half(i-1));\
+      z_vals(i)=z_vals(i-1)+h*(t_vals_half(i-1)*sin_half(t_vals(i-1)));\
+End\
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 y_vals_exact=(1/2)*t_vals.^2 + 3*sin(t_vals) - 3*t_vals.*cos(t_vals) - (t_vals.^2).*sin(t_vals);\
+z_vals_exact=1 + sin(t_vals) - t_vals.*cos(t_vals);\
+ \
+figure(1)\
+plot(t_vals,x_vals,\cf2 'k-'\cf0 )\
+hold \cf2 on\cf0 \
+plot(t_vals,y_vals,\cf2 'b-'\cf0 )\
+plot(t_vals,z_vals,\cf2 'r-'\cf0 )\
+hold \cf2 off\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf2  \cf0 \
+figure(2)\
+plot(t_vals,y_vals,\cf2 'k-'\cf0 )\
+hold \cf2 on\cf0 \
+plot(t_vals,y_vals_exact,\cf2 'r--'\cf0 )\
+hold \cf2 off\cf0 \
+\cf2  \cf0 \
+figure(3)\
+plot(t_vals,abs(y_vals-y_vals_exact),\cf2 'k-'\cf0 )\
+ \
+abs_xyz_origin=zeros(1,steps+1);\
+ \
+\pard\pardeftab720\partightenfactor0
+\cf3 for\cf0  j = 1:steps+1\
+    abs_xyz_origin(j)=sqrt(x_vals(j)^2+y_vals(j)^2+z_vals(j)^2);\
+\cf3 end\cf0 \
+\cf3  \cf0 \
+figure(4)\
+plot(t_vals,abs_xyz_origin,\cf2 'b-'\cf0 )\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+      }

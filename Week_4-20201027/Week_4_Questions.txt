@@ -1,0 +1,11 @@
+Q1) Using any method you choose, show that the leap frog method is not O(h^3)
+	accurate for the simple harmonic oscillator d^{2}y/dt^{2} + {pi^2}*y = 0, for 
+	t between 0 and 1, y(0) = 0, dy/dt (0) = 3 pi.
+leap frog need three points, 1. use forward Eular to cal the second value of y
+
+	y(t) = 3 sin(pi t).
+
+Q2) Using an RK2 scheme, solve dx/dt = x^2 + y*t^2, dy/dt = z*t, dz/dt = t*sin(t)
+	for t between 0 and 1, x(0) = 0, y(0) = 0, z(0) = 1. Plot two figures, 
+	the first showing x, y and z against t and the second showing the 
+	distance of the co-ordinate (x,y,z) from the origin at all times.

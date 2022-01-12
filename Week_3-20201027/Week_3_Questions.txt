@@ -1,0 +1,14 @@
+Q1) Using the backward Euler method, solve dy/dt = y^2 for t between 0 and 1
+	with a variety of choices of timestep. y(0) = 1, plot these on the 
+	same graph.
+
+Q2) Same equation as Q1, with t between 0 and 0.95, y(0) = 1 and 1000 timesteps.
+	Use the forward Euler method to calculate y at the second time. Then use
+	the leap frog method to calculate the rest of the y values.
+
+Q3) d^{2}y/dt^{2} + 6 dy/dt + t cosh(y^2) = 0, y(0) = 1, dy/dt (0) = -1. Solve this
+	equation using the Forward Euler method for t between 0 and 2. Plot two
+	separate figures for y against t and the phase plane. 
+
+Q4) Investigate, in your own way, the order of error for both methods used in
+	Q1 and Q2. Use a variety of choices for timestep.

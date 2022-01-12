@@ -1,0 +1,22 @@
+Q1) Solve the wave equation u_tt - 4 u_xx = 0. u(x,0) = cos(pi x)^2, 
+	du/dt (x,0) = 1 - 2 sin(2 pi x)
+	t between 0 and 1, x between -1 and 1 with a periodic boundary condition in x.
+
+Q2) Solve the diffusion equation with advection u_t + 2 u_x = u_xx. u(x,0) = exp(-x^2)
+	t between 0 and 1, x between -2 and 2 with a periodic boundary condition in x.
+
+
+Eg 1. u_tt - u_xx = 0, u(x,0) = 1 - |x|, du/dt (x,0) = 1/2, t in 0 -> 1, x in -1 -> 1. 
+	Periodic boundary condition in x
+
+Eg 2. u_t + 3 u_x = u_xx, u(x,0) = x - cos(pi x), t in 0 -> 1, x in -1 -> 1.
+	Periodic boundary condition in x
+
+
+
+
+
+
+
+
+
